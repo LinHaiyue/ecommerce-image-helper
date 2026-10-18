@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图片画廊 · 电商图片助手</title>
+  <link rel="stylesheet" href="./gallery.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3v11" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="m7 10 5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 18.5h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <div class="brand-text">
+        <h1 id="page-title">图片画廊</h1>
+        <p id="page-meta" class="meta">暂无采集结果</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a id="source-link" class="ghost-btn" href="#" target="_blank" rel="noopener noreferrer" hidden>打开原页面</a>
+      <button id="recapture-btn" class="ghost-btn" type="button" hidden>重新采集</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <section id="empty-state" class="empty">
+      <span class="empty-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="8.5" cy="9.5" r="1.6" stroke="currentColor" stroke-width="1.4"/>
+          <path d="m4.5 17 4.6-4.6a1.5 1.5 0 0 1 2.1 0l3.2 3.2M14 14.5l1.6-1.6a1.5 1.5 0 0 1 2.1 0L20 15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <h2>还没有采集结果</h2>
+      <p>打开淘宝、京东或拼多多的商品详情页，点击右下角悬浮的「获取图片」按钮，图片就会出现在这里。</p>
+    </section>
+
+    <section id="gallery" aria-label="采集到的图片" hidden>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="actionbar" id="actionbar" hidden>
+    <div class="bar-left">
+      <span id="selection-count" class="count">已选 0 / 共 0 张</span>
+      <div class="bar-tools">
+        <button id="select-all" class="chip" type="button">全选</button>
+        <button id="invert" class="chip" type="button">反选</button>
+        <button id="clear" class="chip" type="button">清空</button>
+        <button id="retry" class="chip" type="button" hidden>重试失败项</button>
+      </div>
+    </div>
+    <div class="bar-right">
+      <span id="status" class="status" role="status" aria-live="polite"></span>
+      <button id="cancel" class="ghost-btn danger" type="button" hidden>取消</button>
+      <button id="download" class="primary-btn" type="button" disabled>下载 PNG</button>
+    </div>
+    <div id="progress" class="progress" hidden><span id="progress-bar"></span></div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./gallery.js"></script>
+</body>
+</html>

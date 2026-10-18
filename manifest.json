@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "电商图片助手",
+  "version": "1.0.0",
+  "description": "在淘宝、京东、拼多多详情页一键提取商品图片，挑选后统一保存为 PNG。",
+  "minimum_chrome_version": "110",
+  "permissions": ["downloads", "storage"],
+  "host_permissions": [
+    "https://*.alicdn.com/*",
+    "https://*.taobaocdn.com/*",
+    "https://*.taobao.com/*",
+    "https://*.tmall.com/*",
+    "https://*.tmall.hk/*",
+    "https://*.jd.com/*",
+    "https://*.jd.hk/*",
+    "https://*.360buyimg.com/*",
+    "https://*.pinduoduo.com/*",
+    "https://*.yangkeduo.com/*",
+    "https://*.pddpic.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://item.taobao.com/*",
+        "*://detail.tmall.com/*",
+        "*://chaoshi.detail.tmall.com/*",
+        "*://detail.tmall.hk/*",
+        "*://world.taobao.com/*",
+        "*://item.jd.com/*",
+        "*://item.jd.hk/*",
+        "*://npcitem.jd.hk/*",
+        "*://mobile.yangkeduo.com/*",
+        "*://mms.pinduoduo.com/*"
+      ],
+      "js": [
+        "src/content/namespace.js",
+        "src/content/adapters/generic.js",
+        "src/content/adapters/taobao.js",
+        "src/content/adapters/jd.js",
+        "src/content/adapters/pdd.js",
+        "src/content/collector.js",
+        "src/content/ui.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "电商图片助手：打开图片画廊",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}

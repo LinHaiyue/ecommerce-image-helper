@@ -1,0 +1,12 @@
+# 系统与编辑器
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+.vscode/
+
+# 日志
+*.log
+
+# 依赖（本项目无构建步骤，正常不会出现）
+node_modules/
